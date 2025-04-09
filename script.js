@@ -54,6 +54,7 @@ function calculerTotalRessources() {
 function calculerTotalPatrimoine() {
     const total = [
         'valeurImmobilier',
+        'valeurSctes',
         'valeurEpargne'
     ]
         .map(id => nettoieValeur(document.getElementById(id)))
