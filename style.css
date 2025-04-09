@@ -68,9 +68,12 @@ button:hover {
 }
 
 .resultatFinal {
-    font-size: 24px;
+    font-size: 48px; /* 2 fois plus gros que 24px */
     font-weight: bold;
     color: green;
+    text-align: center; /* Centré */
+    display: block;
+    margin-top: 20px; /* Optionnel, pour aérer */
 }
 /* === FOOTER STYLE ATOME 47 === */
 
