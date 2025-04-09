@@ -1,121 +1,104 @@
+// Sélecteurs principaux
 const dateNaissanceInput = document.getElementById('dateNaissance');
 const ageActuelSpan = document.getElementById('ageActuel');
-const anneesRetraiteSpan = document.getElementById('anneesRetraite');
 const inputs = document.querySelectorAll('input');
 
+// Formatage des nombres avec espaces pour les milliers (affichage uniquement)
 function formatNombre(valeur) {
     return valeur.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
 }
 
-function formatNombreAffichage(valeur) {
-    return Math.round(valeur).toString().replace(/\B(?=(\d{3})+(?!\d))/g, ' ');
-}
-
+// Nettoyage des valeurs dans les champs pour ne garder que des chiffres
 function nettoieValeur(champ) {
     return parseFloat(champ.value.replace(/\D/g, '')) || 0;
 }
 
-function appliqueFormatChamp(champ) {
-    const previousLength = champ.value.length;
-    const previousCursor = champ.selectionStart;
-
-    const valeur = nettoieValeur(champ);
-    const nouvelleValeur = valeur ? formatNombre(valeur) : '';
-
-    champ.value = nouvelleValeur;
-
-    const newLength = nouvelleValeur.length;
-    const diff = newLength - previousLength;
-    champ.setSelectionRange(previousCursor + diff, previousCursor + diff);
-}
-
+// Calcul de l'âge actuel et des années restantes avant la retraite
 function calculerAgeEtRetraite() {
     const today = new Date();
     const naissance = new Date(dateNaissanceInput.value);
-    if (isNaN(naissance)) return;
+
+    if (isNaN(naissance)) {
+        ageActuelSpan.textContent = '-';
+        return;
+    }
 
     let age = today.getFullYear() - naissance.getFullYear();
     const m = today.getMonth() - naissance.getMonth();
     if (m < 0 || (m === 0 && today.getDate() < naissance.getDate())) {
         age--;
     }
+
     ageActuelSpan.textContent = age;
-    anneesRetraiteSpan.textContent = Math.max(64 - age, 0);
+
     calculFinal();
 }
 
-function calculerCotisationsObligatoires() {
-    const remunerationNette = nettoieValeur(document.getElementById('remunerationNette'));
-    const valeurInput = document.getElementById('cotisationsObligatoiresValeur');
-
-
-
-
-}
-
+// Calcul du total des ressources générées
 function calculerTotalRessources() {
-    calculerCotisationsObligatoires();
-
-    const total = ['resultatNet', 'is', 'remunerationNette', 'cotisationsObligatoiresValeur', 'cotisationsFacultatives', 'revenusLocatifs']
+    const total = [
+        'resultatNet',
+        'is',
+        'remunerationNette',
+        'cotisationsObligatoiresValeur',
+        'cotisationsFacultatives'
+    ]
         .map(id => nettoieValeur(document.getElementById(id)))
         .reduce((acc, val) => acc + val, 0);
 
-    document.getElementById('totalRessources').textContent = formatNombreAffichage(total);
+    document.getElementById('totalRessources').textContent = formatNombre(total) + ' €';
     return total;
 }
 
+// Calcul du total du patrimoine
 function calculerTotalPatrimoine() {
-    const total = ['valeurImmobilier', 'valeurEpargne']
+    const total = [
+        'valeurImmobilier',
+        'valeurEpargne'
+    ]
         .map(id => nettoieValeur(document.getElementById(id)))
         .reduce((acc, val) => acc + val, 0);
 
-    document.getElementById('totalPatrimoine').textContent = formatNombreAffichage(total);
+    document.getElementById('totalPatrimoine').textContent = formatNombre(total) + ' €';
     return total;
 }
 
+// Calcul final du montant estimé
 function calculFinal() {
+    const montantFinalElement = document.getElementById('montantFinal');
+
+    // Vérification : si la date de naissance n'est pas remplie, on bloque le calcul et affiche un message
+    if (!dateNaissanceInput.value) {
+        montantFinalElement.textContent = 'Renseignez votre date de naissance';
+        return;
+    }
+
     const totalRessources = calculerTotalRessources();
     const totalPatrimoine = calculerTotalPatrimoine();
-    const ageActuel = parseInt(ageActuelSpan.textContent) || 0;
-    const anneesRetraite = Math.max(64 - ageActuel, 0);
 
-    let montant = Math.round(totalRessources * anneesRetraite * 0.15);
-    if (ageActuel >= 49) {
+    const ageActuel = parseInt(ageActuelSpan.textContent) || 0;
+    const anneesRestantes = Math.max(64 - ageActuel, 0);
+
+    let montant = Math.round(totalRessources * anneesRestantes * 0.15);
+
+    if (ageActuel >= 50) {
         montant += Math.round(totalPatrimoine * 0.10);
     }
 
-    // Récupérer le prénom
-    const prenom = document.getElementById('prenom').value.trim();
-
-    // Mettre à jour le titre
-    const titreGain = document.getElementById('titreGain');
-    if (prenom) {
-        titreGain.textContent = `${prenom}, votre gain potentiel est :`;
-    } else {
-        titreGain.textContent = 'Votre gain potentiel';
-    }
-
-    // Mettre à jour le montant avec un + devant
-    document.getElementById('montantFinal').textContent = '+' + formatNombreAffichage(montant) + ' €';
+    montantFinalElement.textContent = '+' + formatNombre(montant) + ' €';
 }
 
-function ouvrirFormulaireContact() {
-    alert('Notre équipe vous contactera rapidement pour fixer un rendez-vous.');
-}
 
-// Appliquer le format lors de la saisie
+// Application dynamique du calcul lors de la saisie
 inputs.forEach(input => {
-    if (input.type === 'text') {
-        input.addEventListener('input', () => {
-            appliqueFormatChamp(input);
-            calculFinal();
-        });
-        input.addEventListener('blur', () => {
-            appliqueFormatChamp(input);
-        });
-    } else {
-        input.addEventListener('input', calculFinal);
-    }
+    input.addEventListener('input', calculFinal);
 });
 
+// Mise à jour dynamique de l'âge à la sélection de la date
 dateNaissanceInput.addEventListener('input', calculerAgeEtRetraite);
+
+// Initialisation au chargement de la page
+window.addEventListener('DOMContentLoaded', () => {
+    calculerAgeEtRetraite();
+    calculFinal();
+});
