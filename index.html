@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Simulateur de gains</title>
+    <link rel="stylesheet" href="style.css" />
+
+    <link rel="https://api.w.org/" href="https://www.atome47.fr/wp-json/" /><link rel="alternate" title="JSON" type="application/json" href="https://www.atome47.fr/wp-json/wp/v2/pages/5" /><link rel="alternate" title="oEmbed (JSON)" type="application/json+oembed" href="https://www.atome47.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.atome47.fr%2F" />
+    <link rel="alternate" title="oEmbed (XML)" type="text/xml+oembed" href="https://www.atome47.fr/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.atome47.fr%2F&#038;format=xml" />
+    <link rel="icon" href="https://www.atome47.fr/wp-content/uploads/2022/05/ATOME47_LOGO-150x150.jpg" sizes="32x32" />
+    <link rel="icon" href="https://www.atome47.fr/wp-content/uploads/2022/05/ATOME47_LOGO.jpg" sizes="192x192" />
+    <link rel="apple-touch-icon" href="https://www.atome47.fr/wp-content/uploads/2022/05/ATOME47_LOGO.jpg" />
+    <meta name="msapplication-TileImage" content="https://www.atome47.fr/wp-content/uploads/2022/05/ATOME47_LOGO.jpg" />
+        <link rel="preconnect" href="https://fonts.gstatic.com">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,600;1,700&display=swap" rel="stylesheet">
+
+
+    
+</head>
+<body>
+    <header>
+        <img src="https://www.atome47.fr/wp-content/themes/atome47//public/img/logo-atome47.svg" alt="Logo" class="logo" />
+    </header>
+
+    <main>
+        <!-- Encart Identité -->
+        <section class="card">
+            <h2>Identité</h2>
+            <label>Date de naissance : <input type="date" id="dateNaissance" required /></label>
+            <p>Âge actuel : <span id="ageActuel">-</span> ans</p>
+            <!--<p>Années avant la retraite : <span id="anneesRetraite">-</span></p>-->
+        </section>
+
+        <!-- Encart Ressources Générées -->
+        <section class="card">
+            <h2>Ressources générées</h2>
+            <label>Résultat net : <input type="number" id="resultatNet" /></label>
+            <label>IS : <input type="number" id="is" /></label>
+            <label>Rémunération nette : <input type="number" id="remunerationNette" /></label>
+            <label>Cotisations sociales obligatoires (valeur) : <input type="number" id="cotisationsObligatoiresValeur" /></label>
+            <label>Cotisations sociales facultatives : <input type="number" id="cotisationsFacultatives" /></label>
+            <label>Revenus locatifs : <input type="number" id="revenusLocatifs" /></label>
+            <p>Total ressources générées : <span id="totalRessources">-</span> €</p>
+        </section>
+
+        <!-- Encart Patrimoine -->
+        <section class="card">
+            <h2>Patrimoine</h2>
+            <label>Valeur des biens immobiliers : <input type="number" id="valeurImmobilier" /></label>
+            <label>Valeur de l'épargne et comptes : <input type="number" id="valeurEpargne" /></label>
+            <p>Total patrimoine : <span id="totalPatrimoine">-</span></p>
+        </section>
+
+        <!-- Résultat final -->
+        <section class="card highlight">
+            <h2 id="titreGain">Votre gain potentiel</h2>
+            <p class="resultatFinal">
+                <span id="montantFinal">-</span>
+            </p>
+        </section>        
+
+        <!-- Appel à action -->
+        <section class="card call-to-action">
+            <h2>Réservez votre rendez-vous</h2>
+            <p>Profitez de notre garantie : Pas d’économies supérieures à nos honoraires ? On vous rembourse à 100%, et on travaille gratuitement jusqu’à la fin de l’engagement.</p>
+            <a href="https://www.atome47.fr/prendre-rendez-vous/" target="_blank">
+                <button>Prendre rendez-vous</button>
+            </a>
+            
+        </section>
+
+        <!-- Formulaire de contact (caché au départ) -->
+        <section class="card" id="formulaireContact" style="display: none;">
+            <h2>Formulaire de contact</h2>
+            <label>Email : <input type="email" /></label>
+            <label>Téléphone : <input type="tel" /></label>
+            <label>Message : <textarea></textarea></label>
+            <button>Envoyer</button>
+        </section>
+    </main>
+
+    <footer>
+        <div id="oct_footer">
+            <div id="oct_footer__container" class="container">
+                <div class="oct_footer__presentation">
+                    <div class="oct_footer__infos">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="185.268" height="43.007" viewBox="0 0 185.268 43.007">
+        <g id="ATOME47_Alt1-BLANC1" transform="translate(-56.516 -79)">
+            <path id="Tracé_440" data-name="Tracé 440" d="M80.477,99.267a8.776,8.776,0,0,1,3.019.593,9.8,9.8,0,0,0-.761-.8,8.93,8.93,0,0,0-14.915,7.956h0a9.14,9.14,0,0,0,.3,1.259c.082.328.151.567.223.777a4.48,4.48,0,0,1-.3,4.242c-1.541,2.118-5.209,2.157-5.924,2.157h-.167a5.452,5.452,0,1,0,5.245,3.934v-.02a3.809,3.809,0,0,1,.787-3.7,5.453,5.453,0,0,1,4.36-1.8c1.019.148,1.537.233,1.751.269a8.743,8.743,0,0,1,6.389-14.879Z" transform="translate(0 -11.862)" fill="#fff" />
+            <path id="Tracé_441" data-name="Tracé 441" d="M124.885,134.859a5.006,5.006,0,0,1-1-.1,4.894,4.894,0,0,1,.373-9.644c-1.574-.6-4.494-2.544-3.717-8.635.056-.275.092-.534.118-.79a.146.146,0,0,0,0-.016v-.02c.023-.236.036-.443.039-.633a8.012,8.012,0,0,0-2.75-6.189c-.2-.167-.4-.328-.61-.479s-.413-.282-.629-.41a8.018,8.018,0,0,0-9.418,12.87h0c.187.167.377.328.574.472s.4.288.613.416a7.545,7.545,0,0,0,.695.38,8.045,8.045,0,0,0,3.357.81h.783a5.294,5.294,0,0,1,4.442,1.364c1.085,1.174,1.456,3,1.1,5.438-.016.089-.026.164-.036.239v.039h0c-.023.193-.036.39-.039.577a5.389,5.389,0,0,0,5.284,5.484h.1a5.4,5.4,0,0,0,5.268-4.262A4.891,4.891,0,0,1,124.885,134.859Z" transform="translate(-32.36 -18.724)" fill="#fff" />
+            <path id="Tracé_442" data-name="Tracé 442" d="M176.922,141.04a6.228,6.228,0,0,0-8.985-1.56h0a6.228,6.228,0,0,0-2.344,3.7c-.029.144-.056.292-.075.436a.9.9,0,0,1-.026.167,4.246,4.246,0,0,1-1.744,3.3,3.793,3.793,0,0,1-2.141.518,5.254,5.254,0,0,1-.544-.039c-.187-.02-.459-.069-.7-.121a9.36,9.36,0,0,1-1.052-.3l-.18-.062-.049-.02c-.131-.039-.279-.079-.42-.108a4.17,4.17,0,1,0,3.1,5.4.178.178,0,0,1,.016-.036,4.236,4.236,0,0,1,.679-1.039,4.415,4.415,0,0,1,.328-.328c.1-.092.21-.184.328-.275,1.128-.856,3.049-1.459,6.228-.429a6.1,6.1,0,0,0,.59.207h0c.18.052.328.089.479.121a6.245,6.245,0,0,0,6.5-9.536Z" transform="translate(-65.282 -39.801)" fill="#fff" />
+            <path id="Tracé_443" data-name="Tracé 443" d="M270.4,82.37l15.588,41.678h-9.507l-3.15-9.284H257.72l-3.278,9.284H245.23L260.988,82.37Zm.528,25.569-5.245-15.292h-.118l-5.429,15.292Z" transform="translate(-126.851 -2.265)" fill="#fff" />
+            <path id="Tracé_444" data-name="Tracé 444" d="M365,123.4h3.911V116.36h5.183V123.4h4.675v3.865h-4.681v12.545a12.4,12.4,0,0,0,.069,1.41,2.382,2.382,0,0,0,.328.983,1.521,1.521,0,0,0,.747.613,3.679,3.679,0,0,0,1.364.2q.547,0,1.092-.02a5.456,5.456,0,0,0,1.092-.161v4l-1.682.184a15.685,15.685,0,0,1-1.682.089,11.54,11.54,0,0,1-3.295-.384,4.419,4.419,0,0,1-1.967-1.138,3.934,3.934,0,0,1-.954-1.888,14.058,14.058,0,0,1-.3-2.59V127.27H365Z" transform="translate(-207.359 -25.113)" fill="#fff" />
+            <path id="Tracé_445" data-name="Tracé 445" d="M452.163,79v25.543H457.8v7.1h-5.635v9.834h-8.2v-9.834H426V103.76L444.456,79ZM443.79,89.818l-10.985,14.752h11.165V89.818Z" transform="translate(-248.362)" fill="#e5cd89" />
+            <path id="Tracé_446" data-name="Tracé 446" d="M562.212,79v7.4c-8.851,7.887-13.653,23.3-13.9,35.076h-9.221a62.14,62.14,0,0,1,14.26-34.463H533.21V79Z" transform="translate(-320.427)" fill="#e5cd89" />
+        </g>
+    </svg>                    <div class="oct_footer__coordonnees">
+                            <p class="oct_footer__title">
+                                Adresse
+                            </p>
+                            <p>
+                                <a href="https://www.atome47.fr/">
+                                    <span class="oct_text--bold">ATOME 47</span>
+                                    <br>
+                                    34 Avenue TURENNE, <br />
+    52200 LANGRES                            </a>
+                            </p>
+                        </div>
+                    </div>
+                    <p class="oct_footer__introduction">
+                        Auditeur, expert et courtier, Atome 47 déploie une offre multi-expertise unique et indépendante pour la protection sociale et la gestion de patrimoine des dirigeants d’entreprise.                </p>
+                </div>
+    
+                <div class="oct_footer__nav__content">
+                    <p class="oct_footer__title">
+                        Écosystème
+                    </p>
+                    <nav class="oct_footer__nav">
+                        <ul id="oct_footer__nav__main" class="menu"><li id="menu-item-53" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-53"><a href="https://www.terredeconseil.fr/">Terre de Conseil</a></li>
+    <li id="menu-item-54" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-54"><a href="https://www.atome22.fr">Atome 22</a></li>
+    <li id="menu-item-55" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-55"><a href="https://www.atome8.fr/">Atome 8</a></li>
+    <li id="menu-item-88" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-88"><a href="https://www.atome47.fr/nos-reseaux/">Nos réseaux</a></li>
+    </ul>                </nav>
+                </div>
+    
+                <div class="oct_footer__contact">
+                    <div class="oct_footer__reseaux__sociaux">
+                        <p class="oct_footer__title">
+                            Retrouvez nous sur
+                        </p>
+                        <span class="item-menu-icon">
+                            <a href="https://www.atome47.fr/nos-reseaux/">
+                                <span class="menu-facebook-link"></span>
+                            </a>
+                            <a href="https://www.atome47.fr/nos-reseaux/">
+                                <span class="menu-linkedin-link"></span>
+                            </a>
+                        </span>
+                    </div>
+                </div>
+    
+                <div class="oct_footer__links">
+                    <a href="https://www.atome47.fr/politique-de-confidentialite/">Mentions légales</a>
+                    <a href="https://www.atome47.fr/plan-du-site/">Plan du site</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+
+    <script src="script.js"></script>
+</body>
+</html>

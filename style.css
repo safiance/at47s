@@ -1,0 +1,197 @@
+body {
+    background-color: #FFFFFF;
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #333;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+}
+
+.logo {
+    height: 60px;
+}
+
+main {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.card {
+    background: #f9f9f9;
+    border: 1px solid #e0cb9a;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.card h2 {
+    color: #80a9cf;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    background-color: #e0cb9a;
+    color: #333;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #d1b97e;
+}
+
+.highlight {
+    background-color: #fff8e1;
+    border-color: #80a9cf;
+}
+
+.call-to-action {
+    background-color: #e0f7fa;
+    text-align: center;
+}
+
+.resultatFinal {
+    font-size: 24px;
+    font-weight: bold;
+    color: green;
+}
+/* === FOOTER STYLE ATOME 47 === */
+
+footer {
+    background-color: #061153;
+    color: white;
+    padding: 40px 0;
+    font-family: 'Poppins', sans-serif;
+    font-size: 14px;
+}
+
+#oct_footer__container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+    gap: 20px;
+}
+
+.oct_footer__presentation,
+.oct_footer__nav__content,
+.oct_footer__contact {
+    flex: 1 1 250px;
+    min-width: 250px;
+}
+
+.oct_footer__infos {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 15px;
+}
+
+.oct_footer__coordonnees a {
+    color: white;
+    text-decoration: none;
+}
+
+.oct_footer__introduction {
+    margin-top: 10px;
+    line-height: 1.5;
+    color: white;
+}
+
+.oct_footer__title {
+    color: #e5cd89;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.oct_footer__nav ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.oct_footer__nav li {
+    margin-bottom: 8px;
+}
+
+.oct_footer__nav a {
+    color: white;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.oct_footer__nav a:hover {
+    color: #e5cd89;
+}
+
+.oct_footer__reseaux__sociaux .item-menu-icon a {
+    display: inline-block;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+.menu-facebook-link::before,
+.menu-linkedin-link::before {
+    content: '';
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    background-size: cover;
+}
+
+.menu-facebook-link::before {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/124/124010.png'); /* à remplacer par ton icône officielle */
+}
+
+.menu-linkedin-link::before {
+    background-image: url('https://cdn-icons-png.flaticon.com/512/174/174857.png'); /* à remplacer par ton icône officielle */
+}
+
+.oct_footer__links {
+    width: 100%;
+    text-align: right;
+    margin-top: 20px;
+}
+
+.oct_footer__links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 13px;
+}
+
+.oct_footer__links a:hover {
+    color: #e5cd89;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #oct_footer__container {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .oct_footer__links {
+        text-align: center;
+        margin-top: 15px;
+    }
+}
