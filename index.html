@@ -24,10 +24,17 @@
     </header>
 
     <main>
+        <section class="card">
+            <h2>Informations</h2>
+            <p>Chaque information que vous renseignez est une opportunité d'optimisation. Prenez 30 secondes pour maximiser la puissance de votre simulation.</p>
+            <p>Si vous possédez plusieurs sociétés, il faudra faire des cumuls et des aditions pour remplir cette estimation.</p>
+            <p><strong>🧩 Astuce :</strong> Plus vous êtes précis, plus nous vous aidons à révéler votre vrai potentiel de gains.</p>
+          </section>
         <!-- Encart Identité -->
         <section class="card">
             <h2>Identité</h2>
             <label>Date de naissance : <input type="date" id="dateNaissance" required /></label>
+            <div class="info-bulle">Élément clé pour débloquer des avantages fiscaux et sociaux liés à votre âge.</div>
             <p>Âge actuel : <span id="ageActuel">-</span> ans</p>
             <!--<p>Années avant la retraite : <span id="anneesRetraite">-</span></p>-->
         </section>
@@ -36,18 +43,28 @@
         <section class="card">
             <h2>Ressources générées</h2>
             <label>Résultat net : <input type="number" id="resultatNet" /></label>
-            <label>IS : <input type="number" id="is" /></label>
+            <div class="info-bulle">Tout en bas de votre bilan, c'est la différence entre vos produits et vos charges.</div><br>
+            <label>IS - Impôt sur les sociétés : <input type="number" id="is" /></label>
+            <div class="info-bulle">Indiquez 0 € si vous n'êtes pas soumis à l'IS</div><br>
             <label>Rémunération nette : <input type="number" id="remunerationNette" /></label>
+            <div class="info-bulle">Le montant total de ce que vous avez prélevé dans l'année dividende compris</div><br>
             <label>Cotisations sociales obligatoires (valeur) : <input type="number" id="cotisationsObligatoiresValeur" /></label>
+            <div class="info-bulle">Le montant de vos charges sociales URSSAF, CSG, CARPIMKO, CARMF, CAVEC etc.</div><br>
             <label>Cotisations sociales facultatives : <input type="number" id="cotisationsFacultatives" /></label>
+            <div class="info-bulle">C'est les contrats que votre banque ou une autre personne vous a dejà proposé, et que vous payer dans l'année</div><br>
             <p>Total ressources générées : <span id="totalRessources">-</span></p>
+            <div class="info-bulle">Le montant total de vos ressources générées sur une année d'activité</div><br>
         </section>
 
         <!-- Encart Patrimoine -->
         <section class="card">
             <h2>Patrimoine</h2>
             <label>Valeur des biens immobiliers : <input type="number" id="valeurImmobilier" /></label>
-            <label>Valeur de l'épargne et comptes : <input type="number" id="valeurEpargne" /></label>
+            <div class="info-bulle">Estimation de vos biens immobiliers, même approximative.</div><br>
+            <label>Valeur des sociétés : <input type="number" id="valeurSctes" /></label>
+            <div class="info-bulle">Estimez la valeur de vos participations. Nous proposons aussi ce service.</div><br>
+            <label>Valeur de l'épargne et actifs financiers : <input type="number" id="valeurEpargne" /></label>
+            <div class="info-bulle">Additionnez la valeur de votre argent dans vos comptes bancaires et placements disponibles (Livret A, Assurance VIE, PEL etc.).</div><br>
             <p>Total patrimoine : <span id="totalPatrimoine">-</span></p>
         </section>
 
@@ -62,7 +79,7 @@
         <!-- Appel à action -->
         <section class="card call-to-action">
             <h2>Réservez votre rendez-vous</h2>
-            <p>Profitez de notre garantie : Pas d’économies supérieures à nos honoraires ? On vous rembourse à 100%, et on travaille gratuitement jusqu’à la fin de l’engagement.</p>
+            <p>Profitez de notre garantie : Pas d’économies supérieures à nos honoraires ? <br>Nous vous remboursons intégralement. <br><br>ZÉRO RISQUE, QUE DU RÉSULTAT !</p>
             <a href="https://www.atome47.fr/prendre-rendez-vous/" target="_blank">
                 <button>Prendre rendez-vous</button>
             </a>
@@ -77,6 +94,21 @@
             <label>Message : <textarea></textarea></label>
             <button>Envoyer</button>
         </section>
+    
+        <!--<section class="card">
+            <h2>Recevez votre estimation</h2>
+            <form id="contactForm">
+              <label>Prénom : <input type="text" id="prenom" required></label>
+              <label>Nom : <input type="text" id="nom" required></label>
+              <label>Lieu de résidence : <input type="text" id="residence" required></label>
+              <label>Email : <input type="email" id="email"></label>
+              <label>Téléphone : <input type="tel" id="telephone"></label>
+              <button type="submit">Envoyer</button>
+            </form>
+            <p id="confirmationMessage" style="color: green; display: none;">✅ Message envoyé avec succès !</p>
+          </section>-->
+    
+    
     </main>
 
     <footer>
